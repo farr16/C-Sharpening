@@ -53,17 +53,32 @@ namespace Pokemon_Starter_Selector
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = listBox1.SelectedIndex;
-            set_TextBoxes_ReadOnly(index<7);
-            label2.Text = "Generation " + (index + 1);
-            label3.Text = "Generation " + (index + 1);
-            label4.Text = "Generation " + (index + 1);
+            bool b = index < 7;
+            set_TextBoxes(b, index);
+            set_Labels(b);
         }
 
-        private void set_TextBoxes_ReadOnly(bool b)
+        private void set_TextBoxes(bool b, int i)
         {
             textBox1.ReadOnly = b;
             textBox2.ReadOnly = b;
             textBox3.ReadOnly = b;
+        }
+
+        private void set_Labels(bool b)
+        {
+            if (b)
+            {
+                label2.Text = "Fire Type:";
+                label3.Text = "Water Type:";
+                label4.Text = "Grass Type:";
+            }
+            else
+            {
+                label2.Text = "Enter Pokemon 1:";
+                label3.Text = "Enter Pokemon 2:";
+                label4.Text = "Enter Pokemon 3:";
+            }
         }
     }
 }

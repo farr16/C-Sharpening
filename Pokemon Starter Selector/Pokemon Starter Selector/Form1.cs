@@ -41,13 +41,21 @@ namespace Pokemon_Starter_Selector
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            int index = listBox1.SelectedIndex;
-            if (index < 7)
-                label1.Text = starterList[listBox1.SelectedIndex];
-            else
+            /*if (String.IsNullOrEmpty(textBox1.Text))
             {
-                label1.Text = "Custom";
+                MessageBox.Show("Enter Pokemon 1 name, please.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }*/
+            String[] starters = new String[3];
+            starters[0] = textBox1.Text;
+            starters[1] = textBox2.Text;
+            starters[2] = textBox3.Text;
+
+            for (int i=0; i<starters.Length; i++)
+            {
+                if (String.IsNullOrEmpty(starters[i]))
+                    MessageBox.Show("Enter Pokemon " + (i + 1) + " name, please.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

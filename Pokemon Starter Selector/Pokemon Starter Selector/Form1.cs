@@ -63,6 +63,20 @@ namespace Pokemon_Starter_Selector
             textBox1.ReadOnly = b;
             textBox2.ReadOnly = b;
             textBox3.ReadOnly = b;
+
+            if(b)
+            {
+                String[] starters = starterList[i].Split(':');
+                textBox1.Text = starters[0];
+                textBox2.Text = starters[1];
+                textBox3.Text = starters[2];
+            }
+            else
+            {
+                textBox1.Clear();
+                textBox2.Clear();
+                textBox3.Clear();
+            }
         }
 
         private void set_Labels(bool b)

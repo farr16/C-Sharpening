@@ -41,20 +41,28 @@ namespace Pokemon_Starter_Selector
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            /*if (String.IsNullOrEmpty(textBox1.Text))
-            {
-                MessageBox.Show("Enter Pokemon 1 name, please.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }*/
             String[] starters = new String[3];
             starters[0] = textBox1.Text;
             starters[1] = textBox2.Text;
             starters[2] = textBox3.Text;
 
+            bool allFilled = true;
+
             for (int i=0; i<starters.Length; i++)
             {
                 if (String.IsNullOrEmpty(starters[i]))
+                {
                     MessageBox.Show("Enter Pokemon " + (i + 1) + " name, please.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    allFilled = false;
+                }
             }
+
+            if (!allFilled)
+                return;
+
+            Random rnd = new Random();
+            int index = rnd.Next(0, 3);
+            label1.Text = "Starter Selected: " + starters[index];
 
         }
 

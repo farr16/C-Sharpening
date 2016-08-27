@@ -59,7 +59,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Click";
+            this.button1.Text = "Select";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
@@ -146,7 +146,7 @@
             this.Controls.Add(this.listBox1);
             this.MinimumSize = new System.Drawing.Size(400, 270);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Random Pokemon Starter Selector";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

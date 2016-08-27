@@ -12,9 +12,19 @@ namespace Pokemon_Starter_Selector
 {
     public partial class Form1 : Form
     {
+        String[] starterList;
+
         public Form1()
         {
             InitializeComponent();
+            starterList = new String[7];
+            starterList[0] = "Charmander:Squirtle:Bulbasaur";
+            starterList[1] = "Cyndaquil:Totodile:Chikorita";
+            starterList[2] = "Torchic:Mudkip:Treecko";
+            starterList[3] = "Chimchar:Piplup:Turtwig";
+            starterList[4] = "Tepig:Oshawott:Snivy";
+            starterList[5] = "Fennekin:Froakie:Chespin";
+            starterList[6] = "Litten:Popplio:Rowlet";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,22 +41,29 @@ namespace Pokemon_Starter_Selector
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            label1.Text = "Selected: " + listBox1.SelectedIndex; 
+            int index = listBox1.SelectedIndex;
+            if (index < 7)
+                label1.Text = starterList[listBox1.SelectedIndex];
+            else
+            {
+                label1.Text = "Custom";
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = listBox1.SelectedIndex;
+            set_TextBoxes_ReadOnly(index<7);
             label2.Text = "Generation " + (index + 1);
             label3.Text = "Generation " + (index + 1);
             label4.Text = "Generation " + (index + 1);
+        }
 
-            if(index == 7)
-            {
-                textBox1.ReadOnly = true;
-                textBox2.ReadOnly = true;
-                textBox3.ReadOnly = true;
-            }
+        private void set_TextBoxes_ReadOnly(bool b)
+        {
+            textBox1.ReadOnly = b;
+            textBox2.ReadOnly = b;
+            textBox3.ReadOnly = b;
         }
     }
 }

@@ -12,17 +12,18 @@ namespace KerbalOrbitalCalculator
 {
     public partial class Form1 : Form
     {
-        private String[] planets;
+        private String[] planetNames;
+        private Body[] bodies;
 
         public Form1()
         {
             InitializeComponent();
 
-            planets = new string[7] { "Moho", "Eve", "Kerbin", "Duna", "Dres", "Jool", "Eeloo" };
+            planetNames = new string[7] { "Moho", "Eve", "Kerbin", "Duna", "Dres", "Jool", "Eeloo" };
 
-            for (int i=0; i<planets.Length;i++)
+            for (int i=0; i<planetNames.Length;i++)
             {
-                String planet = planets[i];
+                String planet = planetNames[i];
                 origComboBox.Items.Add(planet);
                 destComboBox.Items.Add(planet);
             }
@@ -41,6 +42,29 @@ namespace KerbalOrbitalCalculator
             phaseAngleDisplay.Text = origComboBox.GetItemText(orig) + " " + origComboBox.Items.IndexOf(orig);
             ejectionAngleDisplay.Text = destComboBox.GetItemText(dest) + " " + destComboBox.Items.IndexOf(dest);
             ejectionVelocityDisplay.Text = "" + (park-20);
+        }
+
+        private void initBodies()
+        {
+            bodies = new Body[8];
+        }
+    }
+
+    public class Body
+    {
+        public String name;
+        public float gravParam;
+        public float semiMajAxis;
+        public int radius;
+        public float soi;
+
+        public Body(String _name, float _gravParam, float _semiMajAxis, int _radius, float _soi)
+        {
+            name = _name;
+            gravParam = _gravParam;
+            semiMajAxis = _semiMajAxis;
+            radius = _radius;
+            soi = _soi;
         }
     }
 }
